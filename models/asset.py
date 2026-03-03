@@ -6,3 +6,6 @@ class Asset:
         
     def get_asset_value(self) -> float:
         return self.asset_price * self.quantity
+    
+    def update_price(self, new_price: float):
+        self.asset_price = new_price
