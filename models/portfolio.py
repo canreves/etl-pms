@@ -33,3 +33,9 @@ class Portfolio:
             })
         else:
             print(f"Not enough quantity of {asset.aid} to sell.")
+            
+    def get_portfolio_value(self) -> float:
+        total_value = 0.0
+        for asset in self.assets.values():
+            total_value += asset.quantity * asset.asset_price
+        return total_value
