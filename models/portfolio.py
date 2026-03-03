@@ -4,15 +4,32 @@ class Portfolio:
         self.assets = {}
         self.transactions = []
 
-    def add_asset(self, asset: Asset):
-        self.assets[asset.aid] = asset
-        self.transactions.append(f"Added asset {asset.aid} with quantity {asset.quantity} at price {asset.asset_price}$.")
-        
 
     def buy_asset(self, asset: Asset, quantity: int):
-        if asset.aid in self.assets:
-            self.assets[asset.aid].quantity += quantity
-            self.transactions.append(f"Bought {quantity} of {asset.aid} at price {asset.asset_price}$.")
+        if asset.aid not in self.assets:
+            asset.quantity = quantity
+            self.assets[asset.aid] = asset
+            
         else:
-            print(f"Asset {asset.aid} not found in portfolio. Please add it first.")
+            self.assets[asset.aid].quantity += quantity
         
+        self.transactions.append({
+            "aid": asset.aid,
+            "transaction_type": "BUY",
+            "quantity": quantity,
+            "price": asset.asset_price  
+        })
+        
+
+    def sell_asset(self, asset: Asset, quantity: int):
+        if asset.aid in self.assets and self.assets[asset.aid].quantity >= quantity:
+            self.assets[asset.aid].quantity -= quantity
+            
+            self.transactions.append({
+                "aid": asset.aid,
+                "transaction_type": "SELL",
+                "quantity": quantity,
+                "price": asset.asset_price  
+            })
+        else:
+            print(f"Not enough quantity of {asset.aid} to sell.")
