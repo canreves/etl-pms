@@ -3,3 +3,6 @@ class Asset:
         self.aid = aid
         self.asset_price = asset_price
         self.quantity = quantity
+        
+    def get_asset_value(self) -> float:
+        return self.asset_price * self.quantity
