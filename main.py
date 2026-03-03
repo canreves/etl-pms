@@ -50,5 +50,22 @@ print(f"Average Cost of AAPL: {average_cost}\n")
 # Test 8: Printing final portfolio state
 print(f"Final Portfolio Assets: {portfolio.assets}")
 print(f"Final Portfolio Transactions: {portfolio.transactions}")
+portfolio.print_portfolio_summary()
+
+# Test 9: Changing asset price and recalculating portfolio value
+apple.update_price(200.0)
+portfolio.buy_asset(apple, 10)  # Buy more to update average cost
+new_portfolio_value = portfolio.get_portfolio_value()
+print(f"Updated Portfolio Value after price change: {new_portfolio_value}\n")
+
+# Test 10: Profit/Loss Calculation
+profit_loss = portfolio.get_profit_loss("AAPL")
+print(f"Profit/Loss for AAPL: {profit_loss}\n")
+
+# Test 11: Printing updated portfolio summary
+portfolio.print_portfolio_summary()
+
+
+
 
 
