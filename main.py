@@ -47,4 +47,8 @@ print(f"Total Portfolio Value: {portfolio_value}\n")
 average_cost = portfolio.get_average_cost("AAPL")
 print(f"Average Cost of AAPL: {average_cost}\n")
 
+# Test 8: Printing final portfolio state
+print(f"Final Portfolio Assets: {portfolio.assets}")
+print(f"Final Portfolio Transactions: {portfolio.transactions}")
+
 
