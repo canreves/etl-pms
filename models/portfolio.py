@@ -1,3 +1,6 @@
+from models.asset import Asset
+from models.transaction import Transaction
+
 class Portfolio:
     def __init__(self, p_name: str):
         self.name = p_name
